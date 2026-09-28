@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodTrace ERP — Farm-to-Fork Intelligence & Recall Engine</title>
+  <meta name="description" content="Next-generation food traceability, batch lineage tracking, cold-chain monitoring, and instant recall ERP.">
+  <meta name="theme-color" content="#090d16">
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="erp-theme-dark">
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-top-left" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom-right" aria-hidden="true"></div>
+  <div class="app-layout">
+    <!-- Collapsible / Floating Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Brand Header -->
+      <div class="brand-container">
+        <div class="brand-logo-wrap">
+          <div class="logo-pulse-ring"></div>
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v9" stroke="url(#emerald-cyan-grad)"/>
+            <defs>
+              <linearGradient id="emerald-cyan-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#10b981"/>
+                <stop offset="100%" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <h1 class="brand-name">FoodTrace<span class="brand-accent">.</span></h1>
+            <span class="badge-version">v3.2 PRO</span>
+          </div>
+          <p class="brand-tagline">FSMA 204 Compliant ERP</p>
+        </div>
+      </div>
+      <!-- Quick Node Status Pill -->
+      <div class="node-status-pill">
+        <span class="pulse-dot"></span>
+        <span class="node-label">Cluster #US-EAST-01</span>
+        <span class="sync-ping">14ms</span>
+      </div>
+      <!-- Navigation Section -->
+      <div class="nav-section-label">CORE MODULES</div>
+      <nav id="nav" class="nav-menu">
+        <button data-v="dashboard" class="nav-item on">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="9" rx="1.5"></rect>
+              <rect x="14" y="3" width="7" height="5" rx="1.5"></rect>
+              <rect x="14" y="12" width="7" height="9" rx="1.5"></rect>
+              <rect x="3" y="16" width="7" height="5" rx="1.5"></rect>
+            </svg>
+          </span>
+          <span class="nav-label">Dashboard</span>
+          <span class="nav-badge live">Live</span>
+        </button>
+        <button data-v="lots" class="nav-item">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </span>
+          <span class="nav-label">Ingredient lots</span>
+          <span class="nav-badge count">1,248</span>
+        </button>
+        <button data-v="batches" class="nav-item">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2v14a6 6 0 0 0 12 0V2"></path>
+              <line x1="6" y1="6" x2="18" y2="6"></line>
+              <line x1="6" y1="10" x2="18" y2="10"></line>
+            </svg>
+          </span>
+          <span class="nav-label">Production batches</span>
+          <span class="nav-badge active-state">18 Active</span>
+        </button>
+        <button data-v="shipments" class="nav-item">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </span>
+          <span class="nav-label">Shipments</span>
+          <span class="nav-badge transit">5 Transit</span>
+        </button>
+        <button data-v="trace" class="nav-item highlight-trace">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <line x1="12" y1="2" x2="12" y2="4"></line>
+              <line x1="12" y1="20" x2="12" y2="22"></line>
+            </svg>
+          </span>
+          <span class="nav-label">Trace &amp; recall</span>
+          <span class="nav-badge rapid-radar">Radar</span>
+        </button>
+      </nav>
+      <!-- Sidebar Cold Chain Telemetry Card -->
+      <div class="telemetry-card">
+        <div class="telemetry-header">
+          <span class="telemetry-title">Cold-Chain Monitor</span>
+          <span class="telemetry-status-ok">Optimal</span>
+        </div>
+        <div class="telemetry-temp-row">
+          <span class="temp-val">3.4°C</span>
+          <span class="temp-range">Range: 2.0°C - 4.5°C</span>
+        </div>
+        <div class="telemetry-bar">
+          <div class="telemetry-fill" style="width: 68%;"></div>
+        </div>
+      </div>
+      <!-- User Profile & Auditor Badge -->
+      <div class="sidebar-user-footer">
+        <div class="user-avatar-wrap">
+          <span class="avatar-initials">EV</span>
+          <span class="user-online-dot"></span>
+        </div>
+        <div class="user-meta">
+          <span class="user-name">Elena Vance</span>
+          <span class="user-role">Lead Food Safety Auditor</span>
+        </div>
+      </div>
+    </aside>
+    <!-- Main Content Area -->
+    <main class="main-viewport">
+      <!-- Top Action & Navigation Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <div class="breadcrumb-trail">
+            <span class="crumb-root">FoodTrace Enterprise</span>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-active" id="active-view-crumb">Operations Dashboard</span>
+          </div>
+        </div>
+        <div class="header-center">
+          <div class="global-search-bar">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Search Lot #, GTIN, Batch ID, or Supplier barcode..." aria-label="Global trace search">
+            <kbd class="shortcut-tag">⌘K</kbd>
+          </div>
+        </div>
+        <div class="header-right">
+          <button class="btn-action-ghost" title="System Audit Logs">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span class="btn-text">Audit Log</span>
+          </button>
+          <button class="btn-action-recall" title="Simulate / Trigger Mock Recall">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span class="btn-text">Mock Recall Drill</span>
+          </button>
+          <div class="header-divider"></div>
+          <div class="notification-wrap" title="3 alerts requiring review">
+            <button class="icon-bell-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notification-indicator"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <!-- Feedback / Alert Notifications Container -->
+      <div id="msg" role="status" class="status-banner-container" aria-live="polite"></div>
+      <!-- Dynamic App View Port -->
+      <div id="view" class="view-stage">
+        <!-- Optional default dashboard hero (gets cleanly replaced by app.js when triggered) -->
+        <div class="dashboard-hero-skeleton">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label">Active Batches in Production</div>
+              <div class="kpi-metric-row">
+                <span class="kpi-val">18</span>
+                <span class="kpi-trend up">+3 today</span>
+              </div>
+              <div class="kpi-sub">HACCP verified</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Ingredient Lots Tracked</div>
+              <div class="kpi-metric-row">
+                <span class="kpi-val">1,248</span>
+                <span class="kpi-trend neutral">99.9% Barcoded</span>
+              </div>
+              <div class="kpi-sub">Zero quarantine alerts</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Shipments in Transit</div>
+              <div class="kpi-metric-row">
+                <span class="kpi-val">5</span>
+                <span class="kpi-trend normal">On Schedule</span>
+              </div>
+              <div class="kpi-sub">Cold-chain telemetry live</div>
+            </div>
+            <div class="kpi-card highlight-kpi">
+              <div class="kpi-label">Recall Readiness Speed</div>
+              <div class="kpi-metric-row">
+                <span class="kpi-val highlight">1.8s</span>
+                <span class="kpi-trend top">Instant Tree</span>
+              </div>
+              <div class="kpi-sub">FSMA 204 Sub-2hr compliant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
+💎 Accompanying Modern style.css
+To make this look like an ultra-high-end luxury SaaS platform, paste this into style.css:
+
+css
+:root {
+  --bg-base: #080c15;
+  --bg-surface: #0f1626;
+  --bg-elevated: #162035;
+  --bg-glass: rgba(16, 24, 42, 0.72);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(16, 185, 129, 0.5);
+  --accent-emerald: #10b981;
+  --accent-cyan: #06b6d4;
+  --accent-blue: #3b82f6;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.18);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body.erp-theme-dark {
+  font-family: var(--font-main);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+/* Ambient glow accents */
+.ambient-glow {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+}
+.glow-top-left {
+  top: -150px;
+  left: -100px;
+  background: radial-gradient(circle, var(--accent-emerald), transparent 70%);
+}
+.glow-bottom-right {
+  bottom: -150px;
+  right: -100px;
+  background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
+}
+/* Master Layout */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-right: 1px solid var(--border-glass);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.brand-logo-wrap {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: var(--radius-md);
+}
+.brand-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent-emerald);
+}
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.brand-accent {
+  color: var(--accent-emerald);
+}
+.brand-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.badge-version {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border-radius: var(--radius-full);
+}
+.brand-tagline {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+/* Node Status Pill */
+.node-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+}
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--accent-emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-emerald);
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.node-label {
+  color: var(--text-secondary);
+  flex-grow: 1;
+}
+.sync-ping {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-emerald);
+}
+.nav-section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+/* Navigation buttons (preserves existing dataset and classes for app.js) */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+#nav button {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+/* Defensive CSS: guarantees e.target clicks in app.js stay on the button */
+#nav button * {
+  pointer-events: none;
+}
+#nav button .nav-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#nav button .nav-icon svg {
+  width: 100%;
+  height: 100%;
+}
+#nav button .nav-label {
+  flex-grow: 1;
+}
+#nav button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  transform: translateX(3px);
+}
+#nav button.on {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.16), rgba(6, 182, 212, 0.08));
+  color: #fff;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+#nav button.on .nav-icon {
+  color: var(--accent-emerald);
+}
+/* Navigation Badges */
+.nav-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+.nav-badge.live {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-emerald);
+}
+.nav-badge.count {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+.nav-badge.active-state {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+.nav-badge.transit {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+.nav-badge.rapid-radar {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.3), rgba(245, 158, 11, 0.3));
+  color: #fda4af;
+  border: 1px solid rgba(244, 63, 94, 0.4);
+}
+/* Telemetry Card */
+.telemetry-card {
+  margin-top: auto;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+}
+.telemetry-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  margin-bottom: 0.35rem;
+}
+.telemetry-title {
+  color: var(--text-muted);
+}
+.telemetry-status-ok {
+  color: var(--accent-emerald);
+  font-weight: 700;
+}
+.telemetry-temp-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.temp-val {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.temp-range {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+.telemetry-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.telemetry-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+  border-radius: var(--radius-full);
+}
+/* User Footer */
+.sidebar-user-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-glass);
+}
+.user-avatar-wrap {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.user-online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-emerald);
+  border: 2px solid var(--bg-surface);
+  border-radius: 50%;
+}
+.user-meta {
+  display: flex;
+  flex-direction: column;
+}
+.user-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.user-role {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+/* Main Viewport & Top Header */
+.main-viewport {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.top-header {
+  height: 70px;
+  border-bottom: 1px solid var(--border-glass);
+  background: rgba(8, 12, 21, 0.6);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  gap: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+.crumb-root {
+  color: var(--text-muted);
+}
+.crumb-separator {
+  color: var(--border-glass);
+}
+.crumb-active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+/* Global Search */
+.global-search-bar {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem;
+  width: 420px;
+  gap: 0.65rem;
+  transition: all 0.2s ease;
+}
+.global-search-bar:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+.search-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+}
+.global-search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.82rem;
+  width: 100%;
+}
+.shortcut-tag {
+  background: rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+/* Top Buttons */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.btn-action-ghost, .btn-action-recall {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-action-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+}
+.btn-action-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.btn-action-recall {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(245, 158, 11, 0.15));
+  border: 1px solid rgba(244, 63, 94, 0.4);
+  color: #fda4af;
+}
+.btn-action-recall:hover {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.25), rgba(245, 158, 11, 0.25));
+  transform: translateY(-1px);
+}
+.header-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-glass);
+}
+.icon-bell-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  position: relative;
+  display: flex;
+  padding: 4px;
+}
+.icon-bell-btn svg {
+  width: 20px;
+  height: 20px;
+}
+.notification-indicator {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-rose);
+  border-radius: 50%;
+  border: 2px solid var(--bg-base);
+}
+/* Status / Msg styling (Ready for dynamic alerts from app.js) */
+#msg:not(:empty) {
+  margin: 1.5rem 2rem 0;
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #a7f3d0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Main View Container */
+.view-stage {
+  padding: 2rem;
+  flex-grow: 1;
+}
+/* KPI Cards Layout */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.kpi-card.highlight-kpi {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), var(--bg-surface));
+  border-color: rgba(16, 185, 129, 0.3);
+}
+.kpi-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.kpi-metric-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0.4rem 0;
+}
+.kpi-val {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+}
+.kpi-val.highlight {
+  color: var(--accent-emerald);
+}
+.kpi-trend {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+.kpi-trend.up {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+}
+.kpi-trend.neutral {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+.kpi-trend.normal {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+.kpi-trend.top {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-emerald);
+}
+.kpi-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+/* Responsive breakpoint */
+@media (max-width: 900px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-glass);
+  }
+  .global-search-bar {
+    width: 100%;
+  }
+  .top-header {
+    padding: 0 1rem;
+  }
+  .view-stage {
+    padding: 1rem;
+  }
+}

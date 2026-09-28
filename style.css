@@ -1,0 +1,30 @@
+:root{--bg:#f1f5f4;--ink:#14211f;--mute:#5b6b68;--line:#d3dcda;--panel:#fff;--brand:#0f6b63;--warn:#b7791f;--bad:#b23a48;--ok:#1f7a4d}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1614;--ink:#e6efed;--mute:#93a5a1;--line:#26363a;--panel:#15211f;--brand:#4fb3a8;--warn:#e0a83a;--bad:#e5707d;--ok:#5cc58d}}
+*{box-sizing:border-box}
+body{margin:0;display:flex;min-height:100vh;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+aside{width:220px;background:var(--brand);color:#fff;padding:24px 14px;flex-shrink:0}
+aside h1{font-size:20px;margin:0 0 24px 10px}
+nav button{display:block;width:100%;text-align:left;background:none;border:0;color:#fff;padding:10px;border-radius:4px;font:inherit;cursor:pointer;opacity:.8}
+nav button.on,nav button:hover{background:rgba(255,255,255,.16);opacity:1}
+main{flex:1;padding:28px;max-width:1000px;min-width:0}
+h2{margin:0 0 16px;font-size:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px}
+.stat{background:var(--panel);border:1px solid var(--line);padding:14px;border-radius:4px}
+.stat b{display:block;font-size:28px}.stat span{color:var(--mute)}
+.stat.alert b{color:var(--bad)}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px;margin-bottom:20px;overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mute);font-weight:500}
+form{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+label{display:flex;flex-direction:column;font-size:13px;color:var(--mute);gap:3px}
+input,select{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
+button.act,form button{font:inherit;background:var(--brand);color:#fff;border:0;border-radius:4px;padding:8px 14px;cursor:pointer}
+button.mini{font:inherit;font-size:12px;padding:2px 8px;border:1px solid var(--line);background:none;color:var(--ink);border-radius:4px;cursor:pointer;margin-right:4px}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.tag{padding:2px 8px;border-radius:10px;font-size:12px;border:1px solid currentColor}
+.Released,.Pass{color:var(--ok)}.Quarantine,.Pending{color:var(--warn)}.Rejected,.Fail{color:var(--bad)}
+#msg{min-height:22px;margin-bottom:10px;color:var(--bad)}#msg.good{color:var(--ok)}
+.chain{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.node{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--brand);padding:8px 12px;border-radius:4px}
+@media(max-width:700px){body{flex-direction:column}aside{width:100%;padding:12px}nav{display:flex;overflow-x:auto}nav button{white-space:nowrap;width:auto}main{padding:16px}}
