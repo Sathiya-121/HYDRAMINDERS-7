@@ -301,3 +301,4 @@ $('#nav').addEventListener('click', e => {
 });
 // Initial boot
 go('dashboard');
+
