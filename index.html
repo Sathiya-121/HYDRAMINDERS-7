@@ -3,126 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoodTrace ERP — Farm-to-Fork Intelligence & Recall Engine</title>
-  <meta name="description" content="Next-gen food manufacturing ERP, batch genealogy tracking, and FSMA 204 instant recall engine.">
-  <meta name="theme-color" content="#090d16">
-  <!-- Google Fonts: Outfit (Headings) + Plus Jakarta Sans (Data) + JetBrains Mono (Codes) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>TinyDotFood — Smart Batch & Food Traceability</title>
+  <meta name="description" content="TinyDotFood — Farm-to-fork batch traceability, ingredient management, and recall engine.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="erp-dark">
-  <!-- Ambient background glow elements -->
-  <div class="ambient-glow glow-1" aria-hidden="true"></div>
-  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+<body>
   <div class="app-layout">
-    <!-- Sidebar Navigation -->
+    <!-- TinyDotFood Sidebar -->
     <aside class="sidebar">
-      <!-- Brand Logo -->
+      <!-- Custom TinyDotFood Brand Logo -->
       <div class="brand">
-        <div class="brand-logo-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v9" stroke="#10b981"/>
+        <div class="brand-logo">
+          <!-- Custom SVG TinyDot Logo -->
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="12" fill="url(#brandGrad)"/>
+            <circle cx="20" cy="20" r="11" stroke="#ffffff" stroke-width="2" stroke-dasharray="3 3"/>
+            <circle cx="20" cy="20" r="5" fill="#ffffff"/>
+            <circle cx="26" cy="14" r="2.5" fill="#10b981"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="40" y2="40">
+                <stop stop-color="#ff5d38"/>
+                <stop offset="1" stop-color="#f59e0b"/>
+              </linearGradient>
+            </defs>
           </svg>
         </div>
-        <div class="brand-info">
-          <div class="brand-title">FoodTrace<span class="dot">.</span></div>
-          <div class="brand-subtitle">FSMA 204 BIOTRACE</div>
+        <div class="brand-text">
+          <div class="brand-name">TinyDot<span class="brand-accent">Food</span><span class="live-dot"></span></div>
+          <span class="brand-sub">Smart Food ERP</span>
         </div>
       </div>
-      <!-- Node Health Badge -->
-      <div class="node-pill">
-        <span class="node-radar"></span>
-        <span class="node-text">Cloud Node #US-EAST-01</span>
-        <span class="node-latency">12ms</span>
-      </div>
-      <!-- Navigation Section -->
-      <div class="nav-caption">NAVIGATION</div>
+      <!-- Navigation Menu -->
       <nav id="nav">
         <button data-v="dashboard" class="on">
-          <span class="btn-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-          </span>
-          <span class="btn-text">Dashboard</span>
-          <span class="nav-chip live">Live</span>
+          <span class="nav-dot"></span>
+          <span>Dashboard</span>
         </button>
         <button data-v="lots">
-          <span class="btn-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-          </span>
-          <span class="btn-text">Ingredient lots</span>
-          <span class="nav-chip">Intake</span>
+          <span class="nav-dot"></span>
+          <span>Ingredient Lots</span>
         </button>
         <button data-v="batches">
-          <span class="btn-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a6 6 0 0 0 12 0V2"/><line x1="6" y1="6" x2="18" y2="6"/><line x1="6" y1="10" x2="18" y2="10"/></svg>
-          </span>
-          <span class="btn-text">Production batches</span>
-          <span class="nav-chip">Mfg</span>
+          <span class="nav-dot"></span>
+          <span>Production Batches</span>
         </button>
         <button data-v="shipments">
-          <span class="btn-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </span>
-          <span class="btn-text">Shipments</span>
-          <span class="nav-chip">Transit</span>
+          <span class="nav-dot"></span>
+          <span>Shipments</span>
         </button>
-        <button data-v="trace" class="trace-nav-btn">
-          <span class="btn-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-          </span>
-          <span class="btn-text">Trace &amp; recall</span>
-          <span class="nav-chip special">Radar</span>
+        <button data-v="trace">
+          <span class="nav-dot"></span>
+          <span>Trace &amp; Recall</span>
         </button>
       </nav>
-      <!-- Sidebar IoT Cold-Chain Gauge -->
-      <div class="coldchain-box">
-        <div class="coldchain-head">
-          <span class="coldchain-title">Cold-Chain Telemetry</span>
-          <span class="coldchain-badge">Optimal</span>
+      <!-- TinyDot Quick Status Widget -->
+      <div class="sidebar-status-card">
+        <div class="status-header">
+          <span class="status-pulse"></span>
+          <span>System Healthy</span>
         </div>
-        <div class="coldchain-temp">
-          <span id="coldchain-val">3.4°C</span>
-          <span class="coldchain-sub">Sensor #402 (Reefer A)</span>
-        </div>
-        <div class="coldchain-track">
-          <div class="coldchain-bar" style="width: 72%;"></div>
-        </div>
-      </div>
-      <!-- User Profile Card -->
-      <div class="sidebar-user">
-        <div class="user-avatar">QA</div>
-        <div class="user-details">
-          <span class="user-name">Dr. Aris Thorne</span>
-          <span class="user-role">Lead Food Safety Auditor</span>
-        </div>
+        <div class="status-sub">FSMA 204 • Sub-2s Trace</div>
       </div>
     </aside>
     <!-- Main Viewport -->
-    <main class="main-wrapper">
-      <!-- Top Action Bar -->
-      <header class="top-nav">
-        <div class="nav-left">
-          <span class="breadcrumb-org">BioTrace Global</span>
-          <span class="breadcrumb-slash">/</span>
-          <span class="breadcrumb-active" id="active-crumb">System Dashboard</span>
-        </div>
-        <div class="nav-right">
-          <div class="status-indicator">
-            <span class="indicator-dot"></span>
-            <span class="indicator-text">HACCP &amp; FSMA 204 Active</span>
-          </div>
-          <button class="hackathon-drill-btn" onclick="go('trace'); setTimeout(() => document.getElementById('demo-trace-1')?.click(), 100);">
-            ⚡ Quick Recall Drill
-          </button>
-        </div>
-      </header>
-      <!-- Feedback Messages / Notifications -->
+    <main class="main">
       <div id="msg" role="status" aria-live="polite"></div>
-      <!-- Dynamic View Container -->
-      <div id="view" class="view-content"></div>
+      <div id="view"></div>
     </main>
   </div>
   <script src="app.js"></script>
